@@ -8,7 +8,11 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-}
+  }
+
+  button {
+    cursor: pointer;
+  }
 
 `
 export default GlobalStyle
