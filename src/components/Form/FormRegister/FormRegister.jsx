@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Input from "../Input";
-import { Form } from "./styles";
-import { registerSchema } from "../../pages/register/registerSchema";
-import { api } from "../../services/api";
+import Input from "../../Input";
+import { Form } from "../styles";
+import { registerSchema } from "./registerSchema";
+import { api } from "../../../services/api";
 import { toast } from "react-toastify";
-import { ButtonPink } from "../Button/styles";
+import { ButtonPink } from "../../Button/styles";
 
 function FormRegister() {
   const [loading, setLoading] = useState(false);

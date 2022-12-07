@@ -4,14 +4,16 @@ import Header from "../../components/Header";
 import { Conteiner, CustomerData, Message, BoxShadow } from "./styles";
 import { Body } from "../../styles/body";
 
-function Home() {
-  const user = JSON.parse(localStorage.getItem("user"));
+function Home({user, setUser}) {
 
   const navigate = useNavigate();
 
   function pageRoute() {
+    
     navigate("/");
     window.localStorage.clear();
+    setUser("")
+
   }
 
   return (

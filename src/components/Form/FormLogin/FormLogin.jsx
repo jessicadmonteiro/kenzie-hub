@@ -1,15 +1,15 @@
-import React from "react";
-import Input from "../Input";
-import { api } from "../../services/api";
-import { Form } from "./styles";
-import { ButtonPink } from "../Button/styles";
+import {React}from "react";
+import Input from "../../Input";
+import { api } from "../../../services/api";
+import { Form } from "../styles";
+import { ButtonPink } from "../../Button/styles";
 import { useForm } from "react-hook-form";
-import { loginSchema } from "../../pages/login/loginSchema";
+import { loginSchema } from "./loginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function FormLogin() {
+function FormLogin({setUser}) {
   const navigate = useNavigate();
 
   const {
@@ -25,15 +25,19 @@ function FormLogin() {
     try {
       const response = await api.post("/sessions", data);
 
+      setUser(response.data.user);
+  
       window.localStorage.clear();
-
       window.localStorage.setItem("token", response.data.token);
-      window.localStorage.setItem("user", JSON.stringify(response.data.user));
+      window.localStorage.setItem("id", response.data.user.id);
+    
       navigate("/home");
+
     } catch (error) {
       toast.error("Ops! Senha ou e-mail inválido!");
     }
   }
+
 
   async function submit(data) {
     await LoginUser(data);

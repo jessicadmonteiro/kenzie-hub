@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import FormRegister from "../../components/Form/FormRegister";
+import FormRegister from "../../components/Form/FormRegister/FormRegister";
 import { Body } from "../../styles/body";
 import { ContainerForm } from "../../components/Form/styles";
 import Header from "../../components/Header";

@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo.svg";
-import FormLogin from "../../components/Form/FormLogin";
+import FormLogin from "../../components/Form/FormLogin/FormLogin";
 import { Body } from "../../styles/body";
 import { ButtonGrey } from "../../components/Button/styles";
 import { Header } from "./styles";
 import { ContainerForm } from "../../components/Form/styles";
 
-function Login() {
+function Login({setUser}) {
   const navigate = useNavigate();
 
   function pageRoute() {
@@ -22,7 +22,7 @@ function Login() {
         <ContainerForm
          margin="margin30"
         >
-          <FormLogin />
+          <FormLogin setUser={setUser}/>
           <p>Ainda não possui uma conta?</p>
           <ButtonGrey onClick={pageRoute}>Cadastre-se</ButtonGrey>
         </ContainerForm>

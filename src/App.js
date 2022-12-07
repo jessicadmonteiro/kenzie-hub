@@ -6,8 +6,11 @@ import Login from "./pages/login";
 import GlobalStyle from "./styles/global";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import {useState} from "react"
 
 function App() {
+  const [user, setUser] = useState()
+
   return (
     <div>
       <ToastContainer
@@ -25,9 +28,9 @@ function App() {
       <GlobalStyle />
       <AnimatePresence>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login setUser={setUser} />} />
           <Route path="register" element={<Register />} />
-          <Route path="home" element={<Home />} />
+          <Route path="home" element={<Home user={user} setUser={setUser} />}/>
         </Routes>
       </AnimatePresence>
     </div>
