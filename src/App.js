@@ -1,16 +1,12 @@
-import { Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import Register from "./pages/register";
-import Home from "./pages/home";
-import Login from "./pages/login";
 import GlobalStyle from "./styles/global";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-import {useState} from "react"
+import RoutesMain from "./routes";
+import { AuthProvider } from "./contexts/ContextAPI/ContextAPI";
+import { AuthProviderTech } from "./contexts/ContextTech/ContextTech";
 
 function App() {
-  const [user, setUser] = useState()
-
   return (
     <div>
       <ToastContainer
@@ -27,11 +23,11 @@ function App() {
       />
       <GlobalStyle />
       <AnimatePresence>
-        <Routes>
-          <Route path="/" element={<Login setUser={setUser} />} />
-          <Route path="register" element={<Register />} />
-          <Route path="home" element={<Home user={user} setUser={setUser} />}/>
-        </Routes>
+        <AuthProvider>
+          <AuthProviderTech>
+            <RoutesMain />
+          </AuthProviderTech>
+        </AuthProvider>
       </AnimatePresence>
     </div>
   );

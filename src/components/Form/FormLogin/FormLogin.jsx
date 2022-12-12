@@ -1,16 +1,15 @@
-import {React}from "react";
+import { React } from "react";
 import Input from "../../Input";
-import { api } from "../../../services/api";
 import { Form } from "../styles";
 import { ButtonPink } from "../../Button/styles";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "./loginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useContext } from "react";
+import { ContextAPI } from "../../../contexts/ContextAPI/ContextAPI";
 
-function FormLogin({setUser}) {
-  const navigate = useNavigate();
+function FormLogin() {
+  const { LoginUser } = useContext(ContextAPI);
 
   const {
     register,
@@ -20,24 +19,6 @@ function FormLogin({setUser}) {
     mode: "onBlur",
     resolver: yupResolver(loginSchema),
   });
-
-  async function LoginUser(data) {
-    try {
-      const response = await api.post("/sessions", data);
-
-      setUser(response.data.user);
-  
-      window.localStorage.clear();
-      window.localStorage.setItem("token", response.data.token);
-      window.localStorage.setItem("id", response.data.user.id);
-    
-      navigate("/home");
-
-    } catch (error) {
-      toast.error("Ops! Senha ou e-mail inválido!");
-    }
-  }
-
 
   async function submit(data) {
     await LoginUser(data);

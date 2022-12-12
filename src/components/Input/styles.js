@@ -15,6 +15,7 @@ export const Fieldset = styled.fieldset`
   }
 
   input {
+    width: 100%;
     height: 48px;
 
     background: #343b41;

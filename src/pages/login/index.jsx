@@ -7,7 +7,7 @@ import { ButtonGrey } from "../../components/Button/styles";
 import { Header } from "./styles";
 import { ContainerForm } from "../../components/Form/styles";
 
-function Login({setUser}) {
+function Login() {
   const navigate = useNavigate();
 
   function pageRoute() {
@@ -22,7 +22,7 @@ function Login({setUser}) {
         <ContainerForm
          margin="margin30"
         >
-          <FormLogin setUser={setUser}/>
+          <FormLogin/>
           <p>Ainda não possui uma conta?</p>
           <ButtonGrey onClick={pageRoute}>Cadastre-se</ButtonGrey>
         </ContainerForm>

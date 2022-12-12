@@ -1,22 +1,27 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
-import { Conteiner, CustomerData, Message, BoxShadow } from "./styles";
+import { Conteiner, CustomerData, BoxShadow, ContainerCard } from "./styles";
 import { Body } from "../../styles/body";
+import { useContext } from "react";
+import { ContextAPI } from "../../contexts/ContextAPI/ContextAPI";
+import CardTech from "../../components/CardTech";
 
-function Home({user, setUser}) {
-
+function Home() {
+  const { user, setUser, loading } = useContext(ContextAPI);
   const navigate = useNavigate();
 
-  function pageRoute() {
-    
-    navigate("/");
-    window.localStorage.clear();
-    setUser("")
-
+  if (loading) {
+    return null;
   }
 
-  return (
+  function pageRoute() {
+    navigate("/");
+    window.localStorage.clear();
+    setUser("");
+  }
+
+  return user ? (
     <Body>
       <Conteiner>
         <BoxShadow>
@@ -33,14 +38,13 @@ function Home({user, setUser}) {
             <p>{user.course_module}</p>
           </CustomerData>
         </BoxShadow>
-        <Message>
-          <h2>Que pena! Estamos em desenvolvimento :(</h2>
-          <p>
-            Nossa aplicação está em desenvolvimento, em breve teremos novidades
-          </p>
-        </Message>
+        <ContainerCard>
+          <CardTech/>
+        </ContainerCard>
       </Conteiner>
     </Body>
+  ) : (
+    <Navigate to="/" />
   );
 }
 

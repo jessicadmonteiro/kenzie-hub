@@ -4,6 +4,7 @@ export const Conteiner = styled.div`
   width: 100%;
 
   margin: auto;
+
 `;
 
 export const BoxShadow = styled.div`
@@ -38,24 +39,10 @@ export const CustomerData = styled.div`
   }
 `;
 
-export const Message = styled.div`
+export const ContainerCard = styled.div`
   width: 70%;
 
   padding-top: 30px;
   margin: auto;
-  h2 {
-    font-weight: 700;
-    font-size: 18px;
 
-    color: #f8f9fa;
-  }
-
-  p {
-    font-weight: 400;
-    font-size: 16px;
-
-    color: #f8f9fa;
-
-    margin-top: 20px;
-  }
 `;
